@@ -41,11 +41,16 @@ rm -f sngrep-1.4.9-0.el7.x86_64.rpm
 
 # Baixa o pacote RPM do sngrep
 info "Baixando o pacote sngrep..."
-wget -q --show-progress https://packages.irontec.com/centos/7/x86_64/sngrep-1.4.9-0.el7.x86_64.rpm || error "Falha ao baixar o pacote sngrep"
+wget -O sngrep-1.4.9-0.el7.x86_64.rpm https://packages.irontec.com/centos/7/x86_64/sngrep-1.4.9-0.el7.x86_64.rpm || error "Falha ao baixar o pacote sngrep"
 
 # Verifica se o arquivo foi baixado
 if [ ! -f sngrep-1.4.9-0.el7.x86_64.rpm ]; then
     error "O arquivo RPM não foi baixado corretamente"
+fi
+
+# Verifica o tamanho do arquivo
+if [ ! -s sngrep-1.4.9-0.el7.x86_64.rpm ]; then
+    error "O arquivo RPM está vazio"
 fi
 
 # Instala o pacote RPM
